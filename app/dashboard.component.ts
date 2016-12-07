@@ -12,15 +12,19 @@ import { HeroService } from './hero.service';
 })
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
-
+  loading:boolean = false
   constructor(
     private router: Router,
     private heroService: HeroService) {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.heroService.getHeroes()
-      .then(heroes => this.heroes = heroes.slice(1, 5));
+    .subscribe(heroes => {
+      this.heroes = heroes;
+      this.loading = false;
+    });
   }
 
   gotoDetail(hero: Hero): void {

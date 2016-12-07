@@ -2,37 +2,32 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Hero } from './hero';
 
 @Injectable()
 export class HeroService {
   private heroesUrl = 'app/heroes';  // URL to web api
+  heroes: FirebaseListObservable<Hero[]>;
+  constructor(private af: AngularFire,private http: Http) { 
 
-  constructor(private af: AngularFire,private http: Http) { }
-
-  getHeroes(): Promise<Hero[]> {
-    return new Promise((resolve, reject) => {   
-      this.af.database.list('/stream', {
-        query: {
-          limitToLast:5
-        }
-      }).subscribe(response => {
-        resolve(response as Hero[]);
-      })
-    })
   }
 
-  getHero(id: string): Promise<Hero> {
-    return new Promise((resolve, reject) => {   
-      this.af.database.list('/stream', {
+  getHeroes(): FirebaseListObservable<Hero[]> {
+    
+      return this.af.database.list('/stream', {
         query: {
-          limitToLast:5
+          orderByChild: 'published',
+          limitToLast:2
         }
-      }).subscribe(response => {
-        resolve(response.filter(item=>id===item.$key)[0] as Hero);
       })
-    })
+  
+  }
+
+  getHero(id: string): FirebaseObjectObservable<Hero> {
+   
+    return  this.af.database.object(`/stream/${id}`);
+    
   }
 
   save(hero: Hero): Promise<Hero> {

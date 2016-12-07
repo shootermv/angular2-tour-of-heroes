@@ -33,14 +33,17 @@ export class HeroesComponent implements OnInit {
    }
 
   getHeroes(): void {
+
+  
     this.loading = true;
     this.heroService
       .getHeroes()
-      .then(heroes => {
+      .subscribe((heroes) => {
+        
         this.heroes = heroes;
         this.loading = false;
-      })
-      .catch(error => this.error = error);
+      },error => this.error = error)
+     
   }
 
   addHero(): void {
