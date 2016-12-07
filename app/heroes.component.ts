@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
@@ -16,9 +17,19 @@ export class HeroesComponent implements OnInit {
   addingHero = false;
   error: any;
 
+
+  items: FirebaseListObservable<any[]>;
+
+
+
+
   constructor(
+    private af: AngularFire,
     private router: Router,
-    private heroService: HeroService) { }
+    private heroService: HeroService) {
+    
+     
+   }
 
   getHeroes(): void {
     this.heroService
@@ -50,6 +61,8 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
+
+    this.items =  this.af.database.list('/stream');
   }
 
   onSelect(hero: Hero): void {
