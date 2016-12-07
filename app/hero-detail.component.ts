@@ -15,7 +15,7 @@ export class HeroDetailComponent implements OnInit {
   @Output() close = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
-
+  loading:boolean =false;
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute) {
@@ -26,9 +26,11 @@ export class HeroDetailComponent implements OnInit {
       if (params['id'] !== undefined) {
         let id = params['id'];
         this.navigated = true;
+        this.loading = true
         this.heroService.getHero(id)
             .then(hero => {
-              this.hero = hero
+              this.loading = false;
+              this.hero = hero;
             });
       } else {
         this.navigated = false;
