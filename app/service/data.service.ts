@@ -41,8 +41,11 @@ export class DataService {
   }
 
   getDataById(id: string): FirebaseListObservable<any> {
-    return this.items = this.af.database.list('/stream_2/'+id, {});
+    return this.items = this.af.database.list('/stream_2/' + id, {});
   }
+
+
+
 
   // getDataById(id: string): Promise<any> {
   //   return new Promise((resolve, reject) => {
