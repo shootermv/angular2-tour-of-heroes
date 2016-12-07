@@ -20,7 +20,7 @@ export class HeroesComponent implements OnInit {
   error: any;
 
 
-  items: FirebaseListObservable<any[]>;
+  items: FirebaseListObservable<Hero[]>;
    //items:any[] = [];
 
 
@@ -93,7 +93,7 @@ export class HeroesComponent implements OnInit {
         limitToFirst:5
       }
     }).subscribe(items=>{
-       console.log('hhh:',JSON.stringify(items[0], null, 5));
+       console.log('hhh:',items[0].$key);
     })
     //.limitToFirst(10);
   }
@@ -101,9 +101,11 @@ export class HeroesComponent implements OnInit {
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
     this.addingHero = false;
+   
+    this.gotoDetail()
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    this.router.navigate(['/detail', this.selectedHero.$key]);
   }
 }
