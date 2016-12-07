@@ -15,20 +15,22 @@ export class DataService {
 
   constructor(private http: Http,private af: AngularFire) {
     // this.items = af.database.list('/stream_2');
+    // this.items = af.database.list('/stream_2', { preserveSnapshot: true, query: {
+    //   limitToLast: 10
+    // }});
+    // this.items
+    //   .subscribe(snapshots => {
+    //     snapshots.forEach(snapshot => {
+    //       console.log(snapshot.key)
+    //       console.log(snapshot.val())
+    //     });
+    //   })
   }
 
-  // getData(): Promise<any[]> {
-  //   return new Promise((resolve, reject) => {
-  //     this.af.database.list('/stream_2', {
-  //       query: {
-  //         limitToLast:5
-  //       }
-  //     }).subscribe(response => {
-  //       console.log(response);
-  //       resolve(response as any[]);
-  //     })
-  //   })
+  // getData(){
+  //   return this.items;
   // }
+
 
   getData(): FirebaseListObservable<any> {
     return this.items = this.af.database.list('/stream_2', {
@@ -38,16 +40,21 @@ export class DataService {
     });
   }
 
-  getDataById(id: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.af.database.list('/stream_2', {
-        query: {
-          limitToLast:5
-        }
-      }).subscribe(response => {
-        resolve(response.filter(item=>id===item.$key)[0] as any);
-      })
-    })
+  getDataById(id: string): FirebaseListObservable<any> {
+    return this.items = this.af.database.list('/stream_2/'+id, {});
   }
+
+  // getDataById(id: string): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     this.af.database.list('/stream_2', {
+  //       query: {
+  //         limitToLast:5
+  //       }
+  //     }).subscribe(response => {
+  //       console.log('our item: ', response)
+  //       resolve(response.filter(item=>id===item.$key)[0] as any);
+  //     })
+  //   })
+  // }
 
 }
