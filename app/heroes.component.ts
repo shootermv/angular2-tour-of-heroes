@@ -20,8 +20,8 @@ export class HeroesComponent implements OnInit {
   error: any;
 
 
-  //items: FirebaseListObservable<any[]>;
-   items:any[] = [];
+  items: FirebaseListObservable<any[]>;
+   //items:any[] = [];
 
 
 
@@ -77,12 +77,19 @@ export class HeroesComponent implements OnInit {
     // Converts an array to an observable sequence
     let source :Observable<any[]>= Observable.from(array);
 
-    //this.af.database.list('/stream')
-    source.subscribe(item=>{
+    
+    /*source.subscribe(item=>{
       this.items.push(item)
-      //this.items =  items;
-    })
-    //this.af.database.list('/stream');
+      
+    })*/
+    this.items = this.af.database.list('/stream', {
+      query: {
+        limitToFirst:5
+      }
+    })/*.subscribe(items=>{
+       this.items = items;
+    })*/
+    //.limitToFirst(10);
   }
 
   onSelect(hero: Hero): void {
