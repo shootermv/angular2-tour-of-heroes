@@ -23,6 +23,16 @@ export class HeroService {
       })
   
   }
+  search(title:string): FirebaseListObservable<Hero[]> {
+    console.log('SEARCHING BY TITLE:',title)
+      return this.af.database.list('/stream', {
+        query: {
+          orderByChild: 'title',
+          equalTo: title
+        }
+      })
+  }
+
 
   getHero(id: string): FirebaseObjectObservable<Hero> {
    

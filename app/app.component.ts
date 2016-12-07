@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     <div class="header-bar"></div>
     <nav>
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/heroes" routerLinkActive="active">Articles</a>
+      <a routerLink="/heroes" routerLinkActive="active">News Feed</a>
       <a routerLink="/search" routerLinkActive="active">Search</a>
     </nav>
     <router-outlet></router-outlet>
@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'News';
 
   constructor() {
    // this.storeInDB();
@@ -29,16 +29,19 @@ export class AppComponent {
  
 
       const config = {
-        /*  apiKey: "AIzaSyA-HlcV4jtbhB0sL2D74SK9RVH9oZIQgVU",
+          apiKey: "AIzaSyA-HlcV4jtbhB0sL2D74SK9RVH9oZIQgVU",
           authDomain: "js-fuseday-2016-stream.firebaseapp.com",
           databaseURL: "https://js-fuseday-2016-stream.firebaseio.com",
           storageBucket: "js-fuseday-2016-stream.appspot.com",
-          messagingSenderId: "533084422648"*/
+          messagingSenderId: "533084422648"
+          
+          /*
           apiKey: "AIzaSyCSKLUpuinUy1jm5uUyx9M_gYGDcv-0orE",
           authDomain: "fuse-2420e.firebaseapp.com",
           databaseURL: "https://fuse-2420e.firebaseio.com",
           storageBucket: "fuse-2420e.appspot.com",
-          messagingSenderId: "578254983095"        
+          messagingSenderId: "578254983095"   
+          */     
       };
 
       firebase.initializeApp(config);

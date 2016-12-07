@@ -16,20 +16,20 @@ import { HeroSearchComponent } from './hero-search.component';
 
 // Must export the config
 export const firebaseConfig = {
-    /*
+    
     apiKey: "AIzaSyA-HlcV4jtbhB0sL2D74SK9RVH9oZIQgVU",
     authDomain: "js-fuseday-2016-stream.firebaseapp.com",
     databaseURL: "https://js-fuseday-2016-stream.firebaseio.com",
     storageBucket: "js-fuseday-2016-stream.appspot.com",
     messagingSenderId: "533084422648"
-    */
     
+    /*
     apiKey: "AIzaSyCSKLUpuinUy1jm5uUyx9M_gYGDcv-0orE",
     authDomain: "fuse-2420e.firebaseapp.com",
     databaseURL: "https://fuse-2420e.firebaseio.com",
     storageBucket: "fuse-2420e.appspot.com",
     messagingSenderId: "578254983095"
-    
+    */
 };
 
 

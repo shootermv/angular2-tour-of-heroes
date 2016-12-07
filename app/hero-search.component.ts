@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-import { HeroSearchService } from './hero-search.service';
+
+import { HeroService } from './hero.service';
 import { Hero } from './hero';
 
 @Component({
@@ -11,22 +13,28 @@ import { Hero } from './hero';
   selector: 'hero-search',
   templateUrl: 'hero-search.component.html',
   styleUrls: ['hero-search.component.css'],
-  providers: [HeroSearchService]
+  providers: [HeroService]
 })
 export class HeroSearchComponent implements OnInit {
-  heroes: Observable<Hero[]>;
+  //heroes: Observable<Hero[]>;
+  heroes:Hero[];// FirebaseListObservable<Hero[]>;;
   private searchTerms = new Subject<string>();
 
   constructor(
-    private heroSearchService: HeroSearchService,
+    private heroSearchService: HeroService,
     private router: Router) { }
-
+    
   search(term: string): void {
     // Push a search term into the observable stream.
-    this.searchTerms.next(term);
+    this.heroSearchService.search(term).subscribe(data=>{
+      console.log('DATA:',data, 'term',term,'------------' )
+      this.heroes = data;
+    });
   }
 
   ngOnInit(): void {
+
+    /*
     this.heroes = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
@@ -39,7 +47,7 @@ export class HeroSearchComponent implements OnInit {
         // TODO: real error handling
         console.log(error);
         return Observable.of<Hero[]>([]);
-      });
+      });*/
   }
 
   gotoDetail(hero: Hero): void {
