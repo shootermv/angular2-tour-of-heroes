@@ -10,16 +10,44 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class DataService {
-  // Resolve HTTP using the constructor
-  constructor (private http: Http) {}
-  // private instance variable to hold base url
-  //private dataUrl = 'http://localhost:3000/api/comments';
-
-  getData(): void {} // stub
 
   items: FirebaseListObservable<any[]>;
-  constructor(af: AngularFire) {
-    this.items = af.database.list('/items');
+
+  constructor(private http: Http,private af: AngularFire) {
+    // this.items = af.database.list('/stream_2');
+  }
+
+  // getData(): Promise<any[]> {
+  //   return new Promise((resolve, reject) => {
+  //     this.af.database.list('/stream_2', {
+  //       query: {
+  //         limitToLast:5
+  //       }
+  //     }).subscribe(response => {
+  //       console.log(response);
+  //       resolve(response as any[]);
+  //     })
+  //   })
+  // }
+
+  getData(): FirebaseListObservable<any> {
+    return this.items = this.af.database.list('/stream_2', {
+      query: {
+        limitToLast:5
+      }
+    });
+  }
+
+  getDataById(id: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.af.database.list('/stream_2', {
+        query: {
+          limitToLast:5
+        }
+      }).subscribe(response => {
+        resolve(response.filter(item=>id===item.$key)[0] as any);
+      })
+    })
   }
 
 }

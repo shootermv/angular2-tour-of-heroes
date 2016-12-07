@@ -7,10 +7,11 @@ import { AngularFireModule } from 'angularfire2';
 
 // Must export the config
 export const firebaseConfig = {
-  apiKey: '<your-key>',
-  authDomain: '<your-project-authdomain>',
-  databaseURL: '<your-database-URL>',
-  storageBucket: '<your-storage-bucket>'
+  apiKey: "AIzaSyA-HlcV4jtbhB0sL2D74SK9RVH9oZIQgVU",
+  authDomain: "js-fuseday-2016-stream.firebaseapp.com",
+  databaseURL: "https://js-fuseday-2016-stream.firebaseio.com",
+  storageBucket: "js-fuseday-2016-stream.appspot.com",
+  messagingSenderId: "533084422648"
 };
 
 import { AppComponent }  from './app.component';

@@ -4,13 +4,11 @@ import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'home',
-  template: `<h1>Home Feed</h1>
-
-  `,
+  template: `<h1>Home Feed</h1>`,
   providers: [DataService]
 
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   ourData: any;
 
@@ -18,9 +16,9 @@ export class HomeComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    this.ourData = this.dataService.getData();
-  }
+  // ngOnInit(): void {
+  //   this.ourData = this.dataService.getData();
+  // }
 
   getData(){
     this.ourData = this.dataService.getData();

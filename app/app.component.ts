@@ -6,7 +6,7 @@ import {Component, style} from '@angular/core';
   template: `<div class="container">
       <div class="col-lg-10 col-offset-1 centered">
       <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class="active"><a routerLink="">HOME</a></li>
+        <li role="presentation"><a routerLink="">HOME</a></li>
         <li role="presentation"><a routerLink="newsfeed">NEWS FEED</a></li>
         <li role="presentation"><a routerLink="activepage/:id">ACTIVE PAGE</a></li>
         <li role="presentation">  <a routerLink="filterpage">FILTER</a></li>
