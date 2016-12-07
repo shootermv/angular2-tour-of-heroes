@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
+
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Hero } from './hero';
@@ -18,8 +20,8 @@ export class HeroesComponent implements OnInit {
   error: any;
 
 
-  items: FirebaseListObservable<any[]>;
-
+  //items: FirebaseListObservable<any[]>;
+   items:any[] = [];
 
 
 
@@ -62,7 +64,25 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
     this.getHeroes();
 
-    this.items =  this.af.database.list('/stream');
+
+    var array:any[] = [{
+      title:'ha',
+      title_full:'lolo'
+    },{
+      title:'fffa',
+      title_full:'lofflo'
+    }
+    ];
+
+    // Converts an array to an observable sequence
+    let source :Observable<any[]>= Observable.from(array);
+
+    //this.af.database.list('/stream')
+    source.subscribe(item=>{
+      this.items.push(item)
+      //this.items =  items;
+    })
+    //this.af.database.list('/stream');
   }
 
   onSelect(hero: Hero): void {

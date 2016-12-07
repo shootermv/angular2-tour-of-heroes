@@ -1,9 +1,9 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
-hii
-  <li  *ngFor="let item of items | async">
+
+  <li  *ngFor="let item of items" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
     <span class="hero-element">
-      <span class="badge">{{item.country}}</span> {{item.title}}
+      <span class="badge">{{item.title_full}}</span> {{item.title}}
     </span>
   </li>
 
