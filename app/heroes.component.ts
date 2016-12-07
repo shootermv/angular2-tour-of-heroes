@@ -86,9 +86,15 @@ export class HeroesComponent implements OnInit {
       query: {
         limitToFirst:5
       }
-    })/*.subscribe(items=>{
-       this.items = items;
-    })*/
+    })
+    
+    this.af.database.list('/stream', {
+      query: {
+        limitToFirst:5
+      }
+    }).subscribe(items=>{
+       console.log('hhh:',JSON.stringify(items[0], null, 5));
+    })
     //.limitToFirst(10);
   }
 

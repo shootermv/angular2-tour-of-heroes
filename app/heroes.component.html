@@ -1,9 +1,9 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
 
-  <li  *ngFor="let item of items | async" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+  <li  *ngFor="let item of items | async" (click)="onSelect(hero)" >
     <span class="hero-element">
-      <span class="badge">{{item.title_full}}</span> {{item.title}}
+      <span class="badge">{{item.title.substr(0,2)}}</span> {{item.title.substr(0,20)}}
     </span>
   </li>
 
