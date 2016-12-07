@@ -1,7 +1,7 @@
 <h3>Top Heroes</h3>
 <div class="grid grid-pad">
    <div *ngIf="loading" class="loader">Loading...</div>
-  <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
+  <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)" class="col-1-{{heroes.length}}">
     <div class="module hero">
       <h4>{{hero.title}}</h4>
     </div>
