@@ -24,6 +24,7 @@ export class ActivepageComponent implements OnInit{
       if (params['id'] !== undefined) {
         let id = +params['id'];
         this.navigated = true;
+        console.log('get item by id: ', id)
         this.ourData = this.dataService.getDataById(id);
       } else {
         this.navigated = false;

@@ -13,7 +13,7 @@ import { Router } from '@angular/router'
       <p>Content: {{item.Text}}</p>
       <p>Published: {{item.published | date: 'dd/MM/yyyy'}}</p>
       <p><a href="{{item.url}}">Read More</a></p>
-      <!--<img src="{{item.thread.main_image}}" height="100" width="100">-->
+      <img src="{{item.thread.main_image}}" height="100" width="100">
       <hr />
     </li>
   </ul>`,
