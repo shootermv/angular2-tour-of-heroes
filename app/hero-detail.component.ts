@@ -27,8 +27,7 @@ export class HeroDetailComponent implements OnInit {
         let id = params['id'];
         this.navigated = true;
         this.heroService.getHero(id)
-            .then(hero =>{ 
-              console.log('ppph:',hero)
+            .then(hero => {
               this.hero = hero
             });
       } else {

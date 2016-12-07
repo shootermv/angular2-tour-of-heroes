@@ -63,39 +63,6 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHeroes();
-
-
-    var array:any[] = [{
-      title:'ha',
-      title_full:'lolo'
-    },{
-      title:'fffa',
-      title_full:'lofflo'
-    }
-    ];
-
-    // Converts an array to an observable sequence
-    let source :Observable<any[]>= Observable.from(array);
-
-    
-    /*source.subscribe(item=>{
-      this.items.push(item)
-      
-    })*/
-    this.items = this.af.database.list('/stream', {
-      query: {
-        limitToFirst:5
-      }
-    })
-    
-    this.af.database.list('/stream', {
-      query: {
-        limitToFirst:5
-      }
-    }).subscribe(items=>{
-       console.log('hhh:',items[0].$key);
-    })
-    //.limitToFirst(10);
   }
 
   onSelect(hero: Hero): void {

@@ -1,22 +1,12 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
 
-  <li  *ngFor="let item of items | async" (click)="onSelect(item)" >
+  <li  *ngFor="let item of heroes" (click)="onSelect(item)" >
     <span class="hero-element">
       <span class="badge">{{item.title.substr(0,2)}}</span> {{item.title.substr(0,20)}}
     </span>
   </li>
 
-
-
-<!--
-  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
-    <span class="hero-element">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </span>
-    <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
-  </li>
-  -->
 </ul>
 
 <div class="error" *ngIf="error">{{error}}</div>

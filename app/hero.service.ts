@@ -12,18 +12,22 @@ export class HeroService {
   constructor(private af: AngularFire,private http: Http) { }
 
   getHeroes(): Promise<Hero[]> {
-    return this.http
-      .get(this.heroesUrl)
-      .toPromise()
-      .then(response => response.json().data as Hero[])
-      .catch(this.handleError);
+    return new Promise((resolve, reject) => {   
+      this.af.database.list('/stream', {
+        query: {
+          limitToLast:5
+        }
+      }).subscribe(response => {
+        resolve(response as Hero[]);
+      })
+    })
   }
 
   getHero(id: string): Promise<Hero> {
     return new Promise((resolve, reject) => {   
       this.af.database.list('/stream', {
         query: {
-          limitToFirst:5
+          limitToLast:5
         }
       }).subscribe(response => {
         resolve(response.filter(item=>id===item.$key)[0] as Hero);
