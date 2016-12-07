@@ -4,8 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { HeroesComponent } from './heroes.component';
 import { HeroDetailComponent } from './hero-detail.component';
-
+import {FiltersPageComponent} from './filter-page.component'
 const routes: Routes = [
+   {
+    path: 'search',
+    component: FiltersPageComponent
+  }, 
   {
     path: '',
     redirectTo: '/dashboard',
@@ -31,4 +35,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routedComponents = [DashboardComponent, HeroesComponent, HeroDetailComponent];
+export const routedComponents = [DashboardComponent, HeroesComponent, HeroDetailComponent, FiltersPageComponent];

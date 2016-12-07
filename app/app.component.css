@@ -24,8 +24,9 @@ nav a:hover {
   color: #039be5;
   background-color: #CFD8DC;
 }
-nav a.router-link-active {
-  color: #039be5;
+nav a.active {
+  color:#fff;
+  background: #039be5;
 }
 .header-bar {
   background-color: rgb(0,120,215);
