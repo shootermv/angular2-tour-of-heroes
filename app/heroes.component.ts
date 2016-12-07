@@ -18,7 +18,7 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   addingHero = false;
   error: any;
-
+  loading:boolean = false;
 
   items: FirebaseListObservable<Hero[]>;
    //items:any[] = [];
@@ -29,14 +29,17 @@ export class HeroesComponent implements OnInit {
     private af: AngularFire,
     private router: Router,
     private heroService: HeroService) {
-    
-     
+
    }
 
   getHeroes(): void {
+    this.loading = true;
     this.heroService
       .getHeroes()
-      .then(heroes => this.heroes = heroes)
+      .then(heroes => {
+        this.heroes = heroes;
+        this.loading = false;
+      })
       .catch(error => this.error = error);
   }
 

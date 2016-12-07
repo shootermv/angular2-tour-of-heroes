@@ -1,6 +1,8 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
 
+  <div *ngIf="loading" class="loader">Loading...</div>
+
   <li  *ngFor="let item of heroes" (click)="onSelect(item)" >
     <span class="hero-element">
       <span class="badge">{{item.title.substr(0,2)}}</span> {{item.title.substr(0,20)}}
